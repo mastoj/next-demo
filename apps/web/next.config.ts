@@ -9,6 +9,10 @@ console.log(
 const nextConfig: NextConfig = {
   rewrites: async () => [
     {
+      source: "/middleware-filter",
+      destination: `${MIDDLEWARE_FILTER_DOMAN}/middleware-filter`,
+    },
+    {
       source: "/middleware-filter/:path*",
       destination: `${MIDDLEWARE_FILTER_DOMAN}/middleware-filter/:path*`,
     },
