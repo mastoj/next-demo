@@ -2,15 +2,24 @@ import { Suspense } from "react";
 import { RecordsTable } from "@/components/records-table";
 import { TableSkeleton } from "@/components/table-skeleton";
 
+export const dynamic = "force-static"; // Force dynamic rendering
+export const revalidate = 20; // Disable revalidation
+
 export default async function Home({
-  searchParams,
+  params,
 }: {
-  searchParams: Promise<{
+  params: Promise<{ filter: string }>;
+}) {
+  const { filter } = await params;
+  // base64 decode the filter
+  const decodedFilter = decodeURIComponent(filter);
+  const searchParams = JSON.parse(
+    Buffer.from(decodedFilter, "base64").toString("utf-8")
+  ) as {
     category?: string | string[];
     year?: string | string[];
     holder?: string | string[];
-  }>;
-}) {
+  };
   return (
     <main className="container py-16 mx-auto max-w-6xl">
       <div className="flex flex-col gap-10">
@@ -26,8 +35,8 @@ export default async function Home({
         </div>
         <Suspense fallback={<TableSkeleton />}>
           <RecordsTable
-            searchParams={await searchParams}
-            basePath="/middleware-filter"
+            searchParams={searchParams}
+            basePath="/middleware-filter/report"
           />
         </Suspense>
       </div>
