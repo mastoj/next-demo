@@ -1,11 +1,12 @@
 import { ChevronDown, Trophy, Calendar, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@repo/ui/components/dropdown-menu";
+import { Button } from "@repo/ui/components/button";
+import { Badge } from "@repo/ui/components/badge";
 import {
   Table,
   TableBody,
@@ -13,9 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { DropdownMenuCheckboxItem } from "@radix-ui/react-dropdown-menu";
+} from "@repo/ui/components/table";
 
 // Simulate a data fetching function with a delay
 async function getRecords() {

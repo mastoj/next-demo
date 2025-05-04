@@ -7,6 +7,8 @@ console.log(
   MIDDLEWARE_FILTER_DOMAN
 );
 const nextConfig: NextConfig = {
+  transpilePackages: ["@repo/ui"],
+
   rewrites: async () => [
     {
       source: "/middleware-filter",

@@ -1,5 +1,12 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Skeleton } from "@repo/ui/components/skeleton";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/components/table";
 
 export function TableSkeleton() {
   return (
@@ -37,7 +44,10 @@ export function TableSkeleton() {
               </TableHeader>
               <TableBody>
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <TableRow key={i} className="border-[color:var(--nordic-100)]">
+                  <TableRow
+                    key={i}
+                    className="border-[color:var(--nordic-100)]"
+                  >
                     <TableCell>
                       <div className="space-y-2">
                         <Skeleton className="h-5 w-full" />
@@ -66,5 +76,5 @@ export function TableSkeleton() {
         </div>
       </div>
     </div>
-  )
+  );
 }
