@@ -10,6 +10,7 @@ export default async function Home({
 }: {
   params: Promise<{ filter: string }>;
 }) {
+  console.log("[report/page.tsx] params", params);
   const { filter } = await params;
   // base64 decode the filter
   const decodedFilter = decodeURIComponent(filter);

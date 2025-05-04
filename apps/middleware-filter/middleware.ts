@@ -19,9 +19,12 @@ export function middleware(req: NextRequest) {
       Buffer.from(JSON.stringify(queryObject)).toString("base64")
     );
 
-    return NextResponse.rewrite(
-      new URL(`/middleware-filter/report/${encodedValue}`, req.url)
+    const newUrl = new URL(
+      `/middleware-filter/report/${encodedValue}`,
+      req.url
     );
+    console.log("[middleware] Redirecting to", newUrl.toString());
+    return NextResponse.rewrite(newUrl);
   }
 
   return NextResponse.next();

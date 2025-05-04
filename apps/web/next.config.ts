@@ -17,8 +17,8 @@ const nextConfig: NextConfig = {
       destination: `${MIDDLEWARE_FILTER_DOMAN}/middleware-filter/:path*`,
     },
     {
-      source: "/middleware-filter-static/:path*",
-      destination: `${MIDDLEWARE_FILTER_DOMAN}/middleware-filter-static/:path*`,
+      source: "/x-static-middleware-filter/:path*",
+      destination: `${MIDDLEWARE_FILTER_DOMAN}/x-static-middleware-filter/:path*`,
     },
   ],
 };
