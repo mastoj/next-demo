@@ -12,7 +12,6 @@ import {
   SelectValue,
 } from "@repo/ui/components/select";
 import { loginAction } from "@/actions/login-action";
-import { redirect } from "next/navigation";
 
 export function LoginForm({
   className,

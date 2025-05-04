@@ -11,10 +11,8 @@ export const GET = async (req: NextRequest) => {
   console.log("[auth] Logout triggered", JSON.stringify(req.nextUrl, null, 2));
   const forwardedHost = req.headers.get("x-forwarded-host");
   const forwardedProto = req.headers.get("x-forwarded-proto");
-  const forwardedPort = req.headers.get("x-forwarded-port");
   const host = forwardedHost || req.headers.get("host");
   const proto = forwardedProto || req.headers.get("x-forwarded-proto");
-  const port = forwardedPort || req.headers.get("x-forwarded-port");
   const url = forwardedHost ? `${proto}://${host}` : req.url;
   console.log("[auth] Logout URL", url.toString());
   const response = NextResponse.redirect(new URL("/auth/login", url));
