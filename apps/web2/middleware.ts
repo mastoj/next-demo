@@ -5,6 +5,10 @@ const applications = [
     url: process.env.NEXT_DEMO_MIDDLEWARE_FILTER_DOMAIN,
     appName: "middleware-filter",
   },
+  {
+    url: process.env.NEXT_DEMO_AUTH_DOMAIN,
+    appName: "auth",
+  },
 ].map((app) => ({
   ...app,
   paths: [`/${app.appName}`, `/x-static-${app.appName}`],
