@@ -11,21 +11,39 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@repo/ui/components/select";
-import { loginAction } from "@/actions/login-action";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"form">) {
   const doLogin = async (formData: FormData) => {
-    const loginResult = await loginAction(formData);
-    console.log("[LoginForm] loginResult", loginResult, formData);
-    if (loginResult.status === "success") {
-      window.location.href = "/";
-    } else {
-      alert(loginResult.message);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+    const persona = formData.get("persona") as string;
+    const loginResult = await fetch("/auth/api/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        password,
+        persona,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("[loginResult]", loginResult);
+    if (loginResult.status !== 200) {
+      alert("Login failed");
+      return;
     }
+    const loginResultData = await loginResult.json();
+    if (loginResultData.status !== "success") {
+      alert(loginResultData.message);
+      return;
+    }
+    window.location.href = "/";
   };
+
   return (
     <form
       action={doLogin}
