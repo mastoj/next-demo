@@ -11,11 +11,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@repo/ui/components/select";
+import { useSearchParams } from "next/navigation";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"form">) {
+  const searchParams = useSearchParams();
+  const returnUrl = searchParams.get("returnUrl");
+  const redirectUrl = returnUrl ? returnUrl : "/";
+
   const doLogin = async (formData: FormData) => {
     const username = formData.get("username") as string;
     const password = formData.get("password") as string;
@@ -41,7 +46,7 @@ export function LoginForm({
       alert(loginResultData.message);
       return;
     }
-    window.location.href = "/";
+    window.location.href = redirectUrl;
   };
 
   return (

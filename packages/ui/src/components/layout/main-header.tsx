@@ -1,14 +1,20 @@
 import { GalleryVerticalEnd } from "lucide-react";
+import { LoginLogout } from "@repo/ui/components/layout/login-logout";
 
 export const MainHeader = () => {
   return (
-    <div className="flex gap-2 justify-start">
+    <div className="flex gap-2 justify-between">
       <a href="/" className="flex items-center gap-2 font-medium">
         <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
           <GalleryVerticalEnd className="size-4" />
         </div>
         NEXT-DEMO
       </a>
+      <div>
+        <div className="flex items-center gap-2">
+          <LoginLogout />
+        </div>
+      </div>
     </div>
   );
 };
