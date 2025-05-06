@@ -15,9 +15,7 @@ export const MainLayout = ({
       <div className={cn("grid min-h-svh lg:grid-cols-1")}>
         <div className="flex flex-col gap-4 p-6 md:p-10">
           <MainHeader />
-          <div className={"flex flex-1 items-center justify-center w-full"}>
-            <div className={cn("w-full", className)}>{children}</div>
-          </div>
+          <div className={cn("w-full", className)}>{children}</div>
         </div>
       </div>
     </CookiesProvider>
