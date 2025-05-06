@@ -1,5 +1,5 @@
-module.exports = {
-  content: [
-    "../../packages/**/*.{js,ts,jsx,tsx}", // 👈 Include shared packages
-  ],
+import uiTailwindConfig from "@repo/ui/tailwind.config.js";
+
+export default {
+  ...uiTailwindConfig,
 };
