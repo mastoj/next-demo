@@ -35,13 +35,13 @@ const checkForApplication = (request: NextRequest) => {
     console.log(["[middleware] newUrl", newUrl.toString()]);
     const headers = new Headers(request.headers);
     headers.set("x-app", app.appName);
+    headers.set("x-app-urlbase", urlBase);
     if (app.bypassSecret) {
       headers.set("x-vercel-protection-bypass", app.bypassSecret);
+      console.log(
+        `[middleware] protection-bypass: ${headers.get(app.bypassSecret.substring(0, 3))}...${app.bypassSecret.substring(app.bypassSecret.length - 3)}`
+      );
     }
-    console.log(
-      "[middleware] headers",
-      headers.get("x-vercel-protection-bypass")?.substring(0, 6)
-    );
     return NextResponse.rewrite(newUrl, {
       headers,
     });
