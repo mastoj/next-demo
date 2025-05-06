@@ -21,8 +21,6 @@ const appRewrites = [
   },
 ]);
 
-console.log("[next.config.ts] appRewrites", appRewrites);
-
 const nextConfig: NextConfig = {
   transpilePackages: ["@repo/ui"],
 
