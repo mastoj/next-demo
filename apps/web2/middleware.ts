@@ -3,10 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 const applications = [
   {
     url: process.env.NEXT_DEMO_MIDDLEWARE_FILTER_DOMAIN,
+    bypassSecret: process.env.NEXT_DEMO_MIDDLEWARE_FILTER_BYPASS_SECRET,
     appName: "middleware-filter",
   },
   {
     url: process.env.NEXT_DEMO_AUTH_DOMAIN,
+    bypassSecret: process.env.NEXT_DEMO_AUTH_BYPASS_SECRET,
     appName: "auth",
   },
 ].map((app) => ({
@@ -31,10 +33,13 @@ const checkForApplication = (request: NextRequest) => {
       newUrl.search = search;
     }
     console.log(["[middleware] newUrl", newUrl.toString()]);
+    const headers = request.headers;
+    headers.set("x-app", app.appName);
+    if (app.bypassSecret) {
+      headers.set("x-vercel-protection-bypass", app.bypassSecret);
+    }
     return NextResponse.rewrite(newUrl, {
-      headers: {
-        "x-app": app.appName,
-      },
+      headers,
     });
   }
 };

@@ -5,7 +5,11 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_DEMO_MIDDLEWARE_FILTER_DOMAIN",
+        "NEXT_DEMO_AUTH_BYPASS_SECRET"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
