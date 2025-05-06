@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 export type SessionData = {
   username: string;
   persona: string;
+  country: string;
 };
 
 export type Session =

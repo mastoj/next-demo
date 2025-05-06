@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 // and simulates a login action
 export const POST = async (req: NextRequest) => {
-  const { username, password, persona } = await req.json();
+  const { username, password, persona, country } = await req.json();
 
   // Simulate a delay
   const result = await new Promise((resolve) => {
@@ -27,6 +27,7 @@ export const POST = async (req: NextRequest) => {
   const cookieValue = JSON.stringify({
     username,
     persona,
+    country,
   });
   response.cookies.set("next-demo.session", cookieValue);
   return response;

@@ -4,6 +4,7 @@ import { cn } from "@repo/ui/lib/utils";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
 import { Label } from "@repo/ui/components/label";
+import { RadioGroup, RadioGroupItem } from "@repo/ui/components/radio-group";
 import {
   Select,
   SelectContent,
@@ -12,6 +13,14 @@ import {
   SelectValue,
 } from "@repo/ui/components/select";
 import { useSearchParams } from "next/navigation";
+import { VisuallyHidden } from "@repo/ui/components/visually-hidden";
+
+const countries = [
+  { id: "no", name: "Norway", flag: "🇳🇴" },
+  { id: "se", name: "Sweden", flag: "🇸🇪" },
+  { id: "dk", name: "Denmark", flag: "🇩🇰" },
+  { id: "fi", name: "Finland", flag: "🇫🇮" },
+];
 
 export function LoginForm({
   className,
@@ -25,12 +34,14 @@ export function LoginForm({
     const username = formData.get("username") as string;
     const password = formData.get("password") as string;
     const persona = formData.get("persona") as string;
+    const country = formData.get("country") as string;
     const loginResult = await fetch("/auth/api/login", {
       method: "POST",
       body: JSON.stringify({
         username,
         password,
         persona,
+        country,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +109,33 @@ export function LoginForm({
           <p className="text-xs text-muted-foreground">
             Choose a persona for this demo
           </p>
-        </div>{" "}
+        </div>
+        <div className="grid gap-2">
+          <Label>Select Country</Label>
+          <RadioGroup
+            defaultValue="no"
+            name="country"
+            className="grid grid-cols-2 gap-4"
+          >
+            {countries.map((country) => (
+              <div key={country.id} className="relative">
+                <RadioGroupItem
+                  value={country.id}
+                  id={country.id}
+                  className="peer absolute opacity-0"
+                />
+                <Label
+                  htmlFor={country.id}
+                  className="flex items-center space-x-2 rounded-lg border-2 border-transparent p-2 transition-colors hover:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-data-[state=checked]:border-primary cursor-pointer"
+                >
+                  <span className="text-2xl">{country.flag}</span>
+                  <span>{country.name}</span>
+                  <VisuallyHidden>Select {country.name}</VisuallyHidden>
+                </Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
         <Button type="submit" className="w-full">
           Login
         </Button>
