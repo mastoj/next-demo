@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 type PersonalizationPageProps = {
   params: Promise<{
     code: string;
