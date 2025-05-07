@@ -1,5 +1,8 @@
+"use client";
 import { GalleryVerticalEnd } from "lucide-react";
-import { LoginLogout } from "@repo/ui/components/layout/login-logout";
+import { LoginLogout } from "./login-logout";
+import { PersonaSwitch } from "./persona-switch";
+import { CountrySwitch } from "./country-switch";
 
 export const MainHeader = () => {
   return (
@@ -11,7 +14,9 @@ export const MainHeader = () => {
         NEXT-DEMO
       </a>
       <div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center *:border-r *:px-4 *:last:border-none">
+          <CountrySwitch />
+          <PersonaSwitch />
           <LoginLogout />
         </div>
       </div>
