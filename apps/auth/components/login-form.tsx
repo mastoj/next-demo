@@ -14,13 +14,7 @@ import {
 } from "@repo/ui/components/select";
 import { useSearchParams } from "next/navigation";
 import { VisuallyHidden } from "@repo/ui/components/visually-hidden";
-
-const countries = [
-  { id: "no", name: "Norway", flag: "🇳🇴" },
-  { id: "se", name: "Sweden", flag: "🇸🇪" },
-  { id: "dk", name: "Denmark", flag: "🇩🇰" },
-  { id: "fi", name: "Finland", flag: "🇫🇮" },
-];
+import { countries, personas } from "@repo/ui/hooks/types";
 
 export function LoginForm({
   className,
@@ -97,13 +91,16 @@ export function LoginForm({
         </div>
         <div className="grid gap-2">
           <Label htmlFor="persona">Select Persona</Label>
-          <Select defaultValue="user" name="persona">
+          <Select defaultValue="basic" name="persona">
             <SelectTrigger id="persona">
               <SelectValue placeholder="Select a persona" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="admin">Admin</SelectItem>
-              <SelectItem value="user">Regular User</SelectItem>
+              {personas.map((persona) => (
+                <SelectItem key={persona} value={persona}>
+                  <span className="capitalize">{persona}</span>
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           <p className="text-xs text-muted-foreground">

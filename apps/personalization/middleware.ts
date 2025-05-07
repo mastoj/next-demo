@@ -1,11 +1,13 @@
-import { Session } from "@repo/ui/hooks/use-session";
+import { Session } from "@repo/ui/hooks/types";
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get("next-demo.session");
-  const session = sessionCookie
-    ? (JSON.parse(sessionCookie.value) as Session)
-    : ({ isLoggedIn: false } as Session);
+  const session = (
+    sessionCookie
+      ? { isLoggedIn: true, session: { ...JSON.parse(sessionCookie.value) } }
+      : { isLoggedIn: false }
+  ) as Session;
 
   const sessionJson = JSON.stringify(session);
   const base64Json = Buffer.from(sessionJson).toString("base64");

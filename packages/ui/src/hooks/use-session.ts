@@ -1,19 +1,5 @@
 import { useCookies } from "react-cookie";
-
-export type SessionData = {
-  username: string;
-  persona: string;
-  country: string;
-};
-
-export type Session =
-  | {
-      isLoggedIn: true;
-      session: SessionData;
-    }
-  | {
-      isLoggedIn: false;
-    };
+import { Session, SessionData } from "./types";
 
 export const useSession = (): Session => {
   const [cookies] = useCookies(["next-demo.session"]);

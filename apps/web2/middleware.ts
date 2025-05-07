@@ -23,9 +23,11 @@ const applications = [
 
 const checkForApplication = (request: NextRequest) => {
   const pathname = request.nextUrl.pathname;
+  console.log(["[middleware] pathname", pathname]);
   const app = applications.find((app) =>
     app.paths.some((path) => pathname.startsWith(path))
   );
+  console.log(["[middleware] app", app]);
   if (app) {
     const urlHeader = request.headers.get(`x-app-${app.appName}`);
     const urlBase = urlHeader ? urlHeader : app.url;
