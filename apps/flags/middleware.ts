@@ -9,26 +9,24 @@ export async function middleware(request: NextRequest) {
     const sessionCookie = request.cookies.get("next-demo.session");
     const session = (
       sessionCookie
-      ? { isLoggedIn: true, session: { ...JSON.parse(sessionCookie.value) } }
-      : { isLoggedIn: false }
+        ? { isLoggedIn: true, session: { ...JSON.parse(sessionCookie.value) } }
+        : { isLoggedIn: false }
     ) as Session;
-    
+
     const flagCode = await precompute(precomputedFlags);
-    
+
     const appContext: AppContext = {
       flagCode,
       session,
     };
-    
+
     const appContextJson = JSON.stringify(appContext);
     const base64Json = Buffer.from(appContextJson).toString("base64");
-    
-    
-    
+
     const pathname = request.nextUrl.pathname;
     const newPath = `/${base64Json}${pathname ? pathname : ""}?${request.nextUrl.search}`;
     const newUrl = new URL(newPath, request.url);
-    console.log("==> [middleware] request", {reqUrl: request.url, pathname);
+    console.log("==> [middleware] request", { reqUrl: request.url, pathname });
     console.log("==> [middleware] newUrl", newUrl);
     return NextResponse.rewrite(newUrl);
   } catch (error) {
