@@ -5,29 +5,34 @@ import { precomputedFlags } from "@repo/ui/lib/flags";
 import { AppContext } from "@repo/ui/lib/types";
 
 export async function middleware(request: NextRequest) {
-  console.log("==> [middleware] request", request.url);
-  const sessionCookie = request.cookies.get("next-demo.session");
-  const session = (
-    sessionCookie
-      ? { isLoggedIn: true, session: { ...JSON.parse(sessionCookie.value) } }
-      : { isLoggedIn: false }
-  ) as Session;
+  try {
+    console.log("==> [middleware] request", request.url);
+    const sessionCookie = request.cookies.get("next-demo.session");
+    const session = (
+      sessionCookie
+        ? { isLoggedIn: true, session: { ...JSON.parse(sessionCookie.value) } }
+        : { isLoggedIn: false }
+    ) as Session;
 
-  const flagCode = await precompute(precomputedFlags);
+    const flagCode = await precompute(precomputedFlags);
 
-  const appContext: AppContext = {
-    flagCode,
-    session,
-  };
+    const appContext: AppContext = {
+      flagCode,
+      session,
+    };
 
-  const appContextJson = JSON.stringify(appContext);
-  const base64Json = Buffer.from(appContextJson).toString("base64");
+    const appContextJson = JSON.stringify(appContext);
+    const base64Json = Buffer.from(appContextJson).toString("base64");
 
-  const pathname = request.nextUrl.pathname;
-  const newPath = `/${base64Json}${pathname}?${request.nextUrl.search}`;
-  const newUrl = new URL(newPath, request.url);
-  console.log("==> [middleware] newUrl", newUrl);
-  return NextResponse.rewrite(newUrl);
+    const pathname = request.nextUrl.pathname;
+    const newPath = `/${base64Json}${pathname}?${request.nextUrl.search}`;
+    const newUrl = new URL(newPath, request.url);
+    console.log("==> [middleware] newUrl", newUrl);
+    return NextResponse.rewrite(newUrl);
+  } catch (error) {
+    console.error("==> [middleware] error", error);
+    return NextResponse.next();
+  }
 }
 
 export const config = {
