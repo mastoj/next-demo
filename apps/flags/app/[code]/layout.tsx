@@ -54,7 +54,7 @@ export default async function RootLayout({
   const appContext = JSON.parse(appContextJson) as AppContext;
   const darkMode = await darkModeFlag(appContext.flagCode, precomputedFlags);
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
-
+  console.log("==> [layout] appContext", appContext);
   return (
     <html lang="en">
       <body
