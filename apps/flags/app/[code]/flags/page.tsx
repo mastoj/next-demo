@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const dynamic = "force-static";
+export const generateStaticParams = async () => [{ code: null }];
 
 export default async function Home() {
   console.log("flags page");
