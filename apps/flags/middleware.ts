@@ -5,6 +5,7 @@ import { precomputedFlags } from "@repo/ui/lib/flags";
 import { AppContext } from "@repo/ui/lib/types";
 
 export async function middleware(request: NextRequest) {
+  console.log("==> [middleware] request", request.url);
   const sessionCookie = request.cookies.get("next-demo.session");
   const session = (
     sessionCookie
