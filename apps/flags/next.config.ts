@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   //     destination: "/_next/static/:path*",
   //   },
   // ],
+  experimental: {
+    useCache: true,
+  },
 };
 
 export default withVercelToolbar()(nextConfig);
