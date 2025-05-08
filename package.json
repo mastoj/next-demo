@@ -7,7 +7,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "start-locally": "concurrently \"pnpm --filter web start --port 3000\" \"pnpm --filter middleware-filter start --port 3001\" \"pnpm --filter auth start --port 3002\" \"pnpm --filter personalization start --port 3003\" \"pnpm --filter web start --port 3010\""
+    "start-locally": "concurrently \"pnpm --filter web start --port 3000\" \"pnpm --filter middleware-filter start --port 3001\" \"pnpm --filter auth start --port 3002\" \"pnpm --filter personalization start --port 3003\" \"pnpm --filter flags start --port 3004\" \"pnpm --filter web start --port 3010\""
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

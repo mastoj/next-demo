@@ -1,7 +1,10 @@
 import { Session } from "@repo/ui/hooks/types";
+import { precompute } from "flags/next";
 import { NextRequest, NextResponse } from "next/server";
+import { precomputedFlags } from "./lib/flags";
+import { AppContext } from "./lib/types";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get("next-demo.session");
   const session = (
     sessionCookie
@@ -9,8 +12,15 @@ export function middleware(request: NextRequest) {
       : { isLoggedIn: false }
   ) as Session;
 
-  const sessionJson = JSON.stringify(session);
-  const base64Json = Buffer.from(sessionJson).toString("base64");
+  const flagCode = await precompute(precomputedFlags);
+
+  const appContext: AppContext = {
+    flagCode,
+    session,
+  };
+
+  const appContextJson = JSON.stringify(appContext);
+  const base64Json = Buffer.from(appContextJson).toString("base64");
 
   const pathname = request.nextUrl.pathname;
   const newPath = `/${base64Json}${pathname}?${request.nextUrl.search}`;
