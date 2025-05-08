@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
   // ],
   experimental: {
     useCache: true,
+    ppr: true,
   },
 };
 
