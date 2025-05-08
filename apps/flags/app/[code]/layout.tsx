@@ -55,8 +55,6 @@ export default async function RootLayout({
   const darkMode = await darkModeFlag(appContext.flagCode, precomputedFlags);
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
 
-  console.log("==> Dark Mode:", darkMode);
-
   return (
     <html lang="en">
       <body
