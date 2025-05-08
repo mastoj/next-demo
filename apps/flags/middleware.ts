@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const newPath = `/${base64Json}${pathname}?${request.nextUrl.search}`;
   const newUrl = new URL(newPath, request.url);
+  console.log("==> [middleware] newUrl", newUrl);
   return NextResponse.rewrite(newUrl);
 }
 
