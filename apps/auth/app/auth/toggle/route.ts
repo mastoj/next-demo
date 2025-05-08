@@ -1,34 +1,27 @@
-// Reads the username, password, and persona from the request body
-
 import { NextRequest, NextResponse } from "next/server";
 
-// and simulates a login action
 export const GET = async (req: NextRequest) => {
-  console.log("==> [toggle] GET", req);
-  return NextResponse.redirect(req.headers.get("referer")!);
-  // // Simulate a delay
-  // const result = await new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     if (username === password) {
-  //       console.log("[loginAction] login success");
-  //       resolve({
-  //         status: "success",
-  //         message: "Login successful",
-  //       });
-  //     } else {
-  //       resolve({
-  //         status: "error",
-  //         message: "Invalid username or password",
-  //       });
-  //     }
-  //   }, 1000);
-  // });
-  // const response = NextResponse.json(result);
-  // const cookieValue = JSON.stringify({
-  //   username,
-  //   persona,
-  //   country,
-  // });
-  // response.cookies.set("next-demo.session", cookieValue);
-  // return response;
+  const searchParams = req.nextUrl.searchParams;
+  const returnUrl = searchParams.get("returnUrl")!;
+  const persona = searchParams.get("persona")!;
+  const country = searchParams.get("country")!;
+
+  const sessionCookie = req.cookies.get("next-demo.session");
+  if (!sessionCookie) {
+    return NextResponse.redirect(returnUrl);
+  }
+  const session = JSON.parse(sessionCookie.value);
+  console.log("==> [toggle] session", session);
+  const newSession = {
+    ...session,
+    persona: persona ? persona : session.persona,
+    country: country ? country : session.country,
+  };
+  const newSessionJson = JSON.stringify(newSession);
+
+  // write new session cookie
+  const response = NextResponse.redirect(new URL(returnUrl));
+  response.cookies.set("next-demo.session", newSessionJson);
+
+  return response;
 };

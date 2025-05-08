@@ -1,9 +1,11 @@
+"use client";
 import { personas } from "@repo/ui/hooks/types";
 import { useSession } from "@repo/ui/hooks/use-session";
-import { cn } from "@repo/ui/lib/utils";
 import { useIsClient } from "@uidotdev/usehooks";
+import { usePathname } from "next/navigation";
 
 export const PersonaSwitch = () => {
+  const pathname = usePathname();
   const isClient = useIsClient();
   const session = useSession();
   if (!isClient) {
@@ -12,6 +14,7 @@ export const PersonaSwitch = () => {
   if (!session.isLoggedIn) {
     return null;
   }
+  const returnUrl = `${window.location.origin}${pathname}`;
   return (
     <div>
       <ul className="flex gap-2">
@@ -20,12 +23,12 @@ export const PersonaSwitch = () => {
           return (
             <li key={persona}>
               {isActive ? (
-                <span className="text-red-500 underline capitalize">
+                <span className="text-red-500 underline capitalize underline-offset-4">
                   {persona}
                 </span>
               ) : (
                 <a
-                  href={`/auth/toggle?persona=${persona}`}
+                  href={`/auth/toggle?persona=${persona}&returnUrl=${returnUrl}`}
                   className={"capitalize"}
                 >
                   {persona}

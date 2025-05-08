@@ -1,9 +1,11 @@
-import { countries, personas } from "@repo/ui/hooks/types";
+"use client";
+import { countries } from "@repo/ui/hooks/types";
 import { useSession } from "@repo/ui/hooks/use-session";
-import { cn } from "@repo/ui/lib/utils";
 import { useIsClient } from "@uidotdev/usehooks";
+import { usePathname } from "next/navigation";
 
 export const CountrySwitch = () => {
+  const pathname = usePathname();
   const isClient = useIsClient();
   const session = useSession();
   if (!isClient) {
@@ -12,6 +14,8 @@ export const CountrySwitch = () => {
   if (!session.isLoggedIn) {
     return null;
   }
+  const returnUrl = `${window.location.origin}${pathname}`;
+
   return (
     <div>
       <ul className="flex gap-2">
@@ -20,12 +24,12 @@ export const CountrySwitch = () => {
           return (
             <li key={country.id}>
               {isActive ? (
-                <span className="capitalize border border-red-500 p-1">
+                <span className="underline text-red-500 p-1 underline-offset-4">
                   {country.flag}
                 </span>
               ) : (
                 <a
-                  href={`/auth/toggle?country=${country.id}`}
+                  href={`/auth/toggle?country=${country.id}&returnUrl=${returnUrl}`}
                   className={"p-1"}
                 >
                   {country.flag}
