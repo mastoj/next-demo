@@ -1,8 +1,8 @@
 import { Session } from "@repo/ui/hooks/types";
 import { precompute } from "flags/next";
 import { NextRequest, NextResponse } from "next/server";
-import { precomputedFlags } from "./lib/flags";
-import { AppContext } from "./lib/types";
+import { precomputedFlags } from "@repo/ui/lib/flags";
+import { AppContext } from "@repo/ui/lib/types";
 
 export async function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get("next-demo.session");
