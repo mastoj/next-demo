@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { RecordsTable } from "@/components/records-table";
 import { TableSkeleton } from "@/components/table-skeleton";
 
-export const dynamic = "force-static"; // Force dynamic rendering
-export const revalidate = 20; // Disable revalidation
+export const dynamic = "force-static";
+export const revalidate = 20;
 
 export default async function Home({
   params,
