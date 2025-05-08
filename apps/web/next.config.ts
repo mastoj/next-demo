@@ -4,11 +4,14 @@ const MIDDLEWARE_FILTER_DOMAN = process.env.NEXT_DEMO_MIDDLEWARE_FILTER_DOMAIN!;
 const AUTH_DOMAN = process.env.NEXT_DEMO_AUTH_DOMAIN!;
 const PERSONALIZATION_DOMAIN =
   process.env.NEXT_DEMO_PERSONALIZATION_DOMAIN || "http://localhost:3003";
+const FLAGS_DOMAIN =
+  process.env.NEXT_DEMO_FLAGS_DOMAIN || "http://localhost:3004";
 
 const appRewrites = [
   { app: "middleware-filter", domain: MIDDLEWARE_FILTER_DOMAN },
   { app: "auth", domain: AUTH_DOMAN },
   { app: "personalization", domain: PERSONALIZATION_DOMAIN },
+  { app: "flags", domain: FLAGS_DOMAIN },
 ].flatMap(({ app, domain }) => [
   {
     source: `/${app}`,

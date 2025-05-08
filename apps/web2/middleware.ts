@@ -16,6 +16,11 @@ const applications = [
     bypassSecret: process.env.NEXT_DEMO_PERSONALIZATION_BYPASS_SECRET,
     appName: "personalization",
   },
+  {
+    url: process.env.NEXT_DEMO_FLAGS_DOMAIN,
+    bypassSecret: process.env.NEXT_DEMO_FLAGS_BYPASS_SECRET,
+    appName: "flags",
+  },
 ].map((app) => ({
   ...app,
   paths: [`/${app.appName}`, `/x-static-${app.appName}`],
