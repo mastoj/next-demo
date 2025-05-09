@@ -5,6 +5,13 @@
       "development": {
         "fallback": "next-demo-mfweb.vercel.app"
       }
+    },
+    "next-demo-mfauth": {
+      "routing": [
+        {
+          "paths": ["/auth", "/auth/:path*"]
+        }
+      ]
     }
   }
 }
