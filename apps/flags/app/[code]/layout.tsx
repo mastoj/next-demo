@@ -8,8 +8,12 @@ import {
   precomputedFlags,
 } from "@repo/ui/lib/flags";
 import { cn } from "@repo/ui/lib/utils";
-import { encryptFlagDefinitions, FlagDefinitionsType } from "flags";
-import { FlagDefinitions } from "flags/react";
+import {
+  encryptFlagDefinitions,
+  encryptFlagValues,
+  FlagDefinitionsType,
+} from "flags";
+import { FlagDefinitions, FlagValues } from "flags/react";
 import { Suspense } from "react";
 import { VercelToolbar } from "@vercel/toolbar/next";
 import { AppContext } from "@repo/ui/lib/types";
@@ -39,6 +43,14 @@ async function ConfidentialFlagDefinitions({
   return <FlagDefinitions definitions={encryptedFlagDefinitions} />;
 }
 
+async function ConfidentialFlagValues({ flagCode }: { flagCode: string }) {
+  const darkMode = await darkModeFlag(flagCode, precomputedFlags);
+  const encryptedFlagValues = await encryptFlagValues({
+    "dark-mode-flag": darkMode,
+  });
+  return <FlagValues values={encryptedFlagValues} />;
+}
+
 export default async function RootLayout({
   children,
   params,
@@ -54,7 +66,6 @@ export default async function RootLayout({
   const appContext = JSON.parse(appContextJson) as AppContext;
   const darkMode = await darkModeFlag(appContext.flagCode, precomputedFlags);
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
-  console.log("==> [layout] appContext", appContext);
   return (
     <html lang="en">
       <body
@@ -69,6 +80,7 @@ export default async function RootLayout({
         </MainLayout>
         <Suspense>
           <ConfidentialFlagDefinitions definitions={flagDefinitions} />
+          <ConfidentialFlagValues flagCode={appContext.flagCode} />
         </Suspense>
         {shouldInjectToolbar && <VercelToolbar />}
       </body>

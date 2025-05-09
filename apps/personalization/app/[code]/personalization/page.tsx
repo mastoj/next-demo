@@ -29,8 +29,6 @@ export default async function PersonalizationPage({
   const { code } = await params;
   const session = getSession(code);
 
-  console.log("==> Session: ", session);
-
   if (!session.isLoggedIn) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -40,7 +38,6 @@ export default async function PersonalizationPage({
   }
 
   const flag = getFlag(session.session.country);
-  console.log("==> Flag: ", flag);
   const isPremium = session.session.persona === "premium";
 
   return (

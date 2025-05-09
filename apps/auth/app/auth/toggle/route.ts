@@ -11,7 +11,6 @@ export const GET = async (req: NextRequest) => {
     return NextResponse.redirect(returnUrl);
   }
   const session = JSON.parse(sessionCookie.value);
-  console.log("==> [toggle] session", session);
   const newSession = {
     ...session,
     persona: persona ? persona : session.persona,
