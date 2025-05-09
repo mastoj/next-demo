@@ -2,16 +2,21 @@
   "$schema": "https://openapi.vercel.sh/microfrontends.json",
   "applications": {
     "next-demo-mfweb": {
+      "packageName": "mfweb",
       "development": {
         "fallback": "next-demo-mfweb.vercel.app"
       }
     },
     "next-demo-mfauth": {
+      "packageName": "mfauth",
       "routing": [
         {
           "paths": ["/auth", "/auth/:path*"]
         }
       ]
     }
+  },
+  "options": {
+    "localProxyPort": 4000
   }
 }
