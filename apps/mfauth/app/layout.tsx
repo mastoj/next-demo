@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@repo/ui/globals.css";
 import { MainLayout } from "@repo/ui/components/layout/main-layout";
+import { VercelToolbar } from "@vercel/toolbar/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const shouldInjectToolbar = process.env.NODE_ENV === "development";
   return (
     <html lang="en">
       <body
@@ -31,6 +33,7 @@ export default function RootLayout({
         <MainLayout className="flex items-center justify-center">
           {children}
         </MainLayout>
+        {shouldInjectToolbar && <VercelToolbar />}
       </body>
     </html>
   );

@@ -14,6 +14,7 @@
     "@repo/ui": "workspace:^",
     "@uidotdev/usehooks": "^2.4.1",
     "@vercel/microfrontends": "^1.2.4",
+    "@vercel/toolbar": "^0.1.36",
     "flags": "^4.0.0",
     "lucide-react": "^0.509.0",
     "next": "^15.3.1",

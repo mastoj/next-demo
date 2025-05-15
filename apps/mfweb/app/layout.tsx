@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@repo/ui/globals.css";
 import { MainLayout } from "@repo/ui/components/layout/main-layout";
+import { VercelToolbar } from "@vercel/toolbar/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,10 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const shouldInjectToolbar = process.env.NODE_ENV === "development";
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <MainLayout className="w-full">{children}</MainLayout>
+        {shouldInjectToolbar && <VercelToolbar />}
       </body>
     </html>
   );
