@@ -26,7 +26,7 @@ export default function RootLayout({
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} dark`}>
         <MainLayout className="w-full">{children}</MainLayout>
         {shouldInjectToolbar && <VercelToolbar />}
       </body>
