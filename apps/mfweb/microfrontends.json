@@ -8,7 +8,6 @@
       }
     },
     "next-demo-mfauth": {
-      "packageName": "mfauth",
       "routing": [
         {
           "paths": ["/auth", "/auth/:path*"]
