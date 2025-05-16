@@ -2,7 +2,6 @@
   "$schema": "https://openapi.vercel.sh/microfrontends.json",
   "applications": {
     "next-demo-mfweb": {
-      "packageName": "mfweb",
       "development": {
         "fallback": "next-demo-mfweb.vercel.app"
       }
