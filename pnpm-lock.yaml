@@ -91,7 +91,7 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ui
       '@vercel/toolbar':
-        specifier: ^0.1.36
+        specifier: 0.1.36
         version: 0.1.36(next@15.4.0-canary.26(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       flags:
         specifier: ^4.0.0
