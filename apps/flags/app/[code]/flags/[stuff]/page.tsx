@@ -8,9 +8,7 @@ export type HomeProps = {
 };
 
 // Use a valid string value for generateStaticParams
-export const generateStaticParams = async () => [
-  { code: "placeholder", stuff: "placeholder" },
-];
+export const generateStaticParams = async () => [{ code: "", stuff: "" }];
 
 // This component will be dynamically rendered
 const RandomComponent = async () => {

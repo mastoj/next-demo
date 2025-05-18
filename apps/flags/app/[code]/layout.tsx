@@ -18,6 +18,7 @@ import { Suspense } from "react";
 import { VercelToolbar } from "@vercel/toolbar/next";
 import { AppContext } from "@repo/ui/lib/types";
 import { FlagValue } from "@repo/ui/components/flag-value";
+import { notFound } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,6 +62,10 @@ export default async function RootLayout({
   }>;
 }>) {
   const { code } = await params;
+  if (code === "") {
+    notFound();
+  }
+
   const urlDecoded = decodeURIComponent(code);
   const appContextJson = Buffer.from(urlDecoded, "base64").toString("utf-8");
   const appContext = JSON.parse(appContextJson) as AppContext;
