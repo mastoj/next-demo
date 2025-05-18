@@ -11,7 +11,7 @@ export const randomFlag = flag({
 export const darkModeFlag = flag({
   key: "dark-mode-flag",
   decide() {
-    return false;
+    return true;
   },
 });
 
