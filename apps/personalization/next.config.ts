@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@repo/ui"],
   /* config options here */
   assetPrefix: "/x-static-personalization",
+  turbopack: {},
 };
 
 export default nextConfig;

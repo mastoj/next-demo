@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@repo/ui"],
 
   rewrites: async () => appRewrites,
+  turbopack: {},
 };
 
 export default nextConfig;

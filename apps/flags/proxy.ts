@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { precomputedFlags } from "@repo/ui/lib/flags";
 import { AppContext } from "@repo/ui/lib/types";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   try {
     const sessionCookie = request.cookies.get("next-demo.session");
     const session = (
@@ -28,6 +28,7 @@ export async function middleware(request: NextRequest) {
     const newUrl = new URL(newPath, request.url);
     return NextResponse.rewrite(newUrl);
   } catch (error) {
+    console.error("Error in flags proxy middleware:", error);
     return NextResponse.next();
   }
 }

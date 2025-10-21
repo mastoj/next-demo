@@ -57,7 +57,7 @@ const checkForApplication = (request: NextRequest) => {
   }
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const appResponse = checkForApplication(request);
   if (appResponse) {
     return appResponse;
