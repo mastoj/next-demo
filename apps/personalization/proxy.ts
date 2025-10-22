@@ -1,7 +1,7 @@
 import { Session } from "@repo/ui/hooks/types";
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const sessionCookie = request.cookies.get("next-demo.session");
   const session = (
     sessionCookie
