@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@repo/ui"],
+  cacheComponents: true,
   /* config options here */
   assetPrefix: "/x-static-flags",
   turbopack: {},

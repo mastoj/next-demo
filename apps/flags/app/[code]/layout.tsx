@@ -18,6 +18,7 @@ import { Suspense } from "react";
 import { VercelToolbar } from "@vercel/toolbar/next";
 import { AppContext } from "@repo/ui/lib/types";
 import { FlagValue } from "@repo/ui/components/flag-value";
+import { connection } from "next/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,11 +40,14 @@ async function ConfidentialFlagDefinitions({
 }: {
   definitions: FlagDefinitionsType;
 }) {
+  await connection();
   const encryptedFlagDefinitions = await encryptFlagDefinitions(definitions);
   return <FlagDefinitions definitions={encryptedFlagDefinitions} />;
 }
 
 async function ConfidentialFlagValues({ flagCode }: { flagCode: string }) {
+  await connection();
+
   const darkMode = await darkModeFlag(flagCode, precomputedFlags);
   const encryptedFlagValues = await encryptFlagValues({
     "dark-mode-flag": darkMode,

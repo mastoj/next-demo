@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:^",
-    "flags": "^4.0.0",
+    "flags": "^4.0.1",
     "lucide-react": "^0.546.0",
     "next": "16.0.0",
     "react": "19.2.0",
