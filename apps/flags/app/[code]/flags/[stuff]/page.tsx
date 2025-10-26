@@ -1,14 +1,10 @@
-import { precomputedFlags, randomFlag } from "@repo/ui/lib/flags";
+import { randomFlag } from "@repo/ui/lib/flags";
 import { Suspense } from "react";
 import { FlagValue } from "@repo/ui/components/flag-value";
-import { generatePermutations } from "flags/next";
 import { connection } from "next/server";
 
 export const generateStaticParams = async () => {
-  const permutations = await generatePermutations(precomputedFlags);
-  return permutations.map((code) => {
-    return { code, stuff: "hello" };
-  });
+  return [{ code: "__PLACEHOLDER__", stuff: "hello" }];
 };
 
 export type HomeProps = {

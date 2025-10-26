@@ -1,16 +1,17 @@
-import { precomputedFlags } from "@repo/ui/lib/flags";
-import { generatePermutations } from "flags/next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const generateStaticParams = async () => {
-  const permutations = await generatePermutations(precomputedFlags);
-  return permutations.map((code) => {
-    return { code };
-  });
+  return [{ code: "__PLACEHOLDER__" }];
 };
 
-export default async function Home() {
-  console.log("flags page");
+export default async function Home(props: {
+  params: Promise<{ code: string }>;
+}) {
+  const { code } = await props.params;
+  if (code === "__PLACEHOLDER__") {
+    notFound();
+  }
   return (
     <>
       <Link href="/flags/hello" className="text-3xl">

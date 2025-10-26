@@ -19,6 +19,7 @@ import { VercelToolbar } from "@vercel/toolbar/next";
 import { AppContext } from "@repo/ui/lib/types";
 import { FlagValue } from "@repo/ui/components/flag-value";
 import { connection } from "next/server";
+import { notFound } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,8 +66,12 @@ export default async function RootLayout({
   }>;
 }>) {
   const { code } = await params;
+  if (code === "__PLACEHOLDER__") {
+    notFound();
+  }
   const urlDecoded = decodeURIComponent(code);
   const appContextJson = Buffer.from(urlDecoded, "base64").toString("utf-8");
+  console.log("==> APP CONTEXT JSON: ", appContextJson);
   const appContext = JSON.parse(appContextJson) as AppContext;
   const darkMode = await darkModeFlag(appContext.flagCode, precomputedFlags);
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
