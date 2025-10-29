@@ -99,7 +99,7 @@ importers:
         version: 0.1.36(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       flags:
         specifier: ^4.0.1
-        version: 4.0.1(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 4.0.1(next@16.0.0(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       lucide-react:
         specifier: ^0.546.0
         version: 0.546.0(react@19.2.0)
@@ -165,8 +165,8 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ui
       '@vercel/microfrontends':
-        specifier: ^2.1.0
-        version: 2.1.0(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^2.1.2
+        version: 2.1.2(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@vercel/toolbar':
         specifier: ^0.1.36
         version: 0.1.36(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -232,14 +232,14 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@vercel/microfrontends':
-        specifier: ^2.1.0
-        version: 2.1.0(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^2.1.2
+        version: 2.1.2(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@vercel/toolbar':
         specifier: ^0.1.36
         version: 0.1.36(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       flags:
         specifier: ^4.0.1
-        version: 4.0.1(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 4.0.1(next@16.0.0(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       lucide-react:
         specifier: ^0.509.0
         version: 0.509.0(react@19.2.0)
@@ -407,7 +407,7 @@ importers:
         version: link:../../packages/ui
       flags:
         specifier: ^4.0.1
-        version: 4.0.1(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 4.0.1(next@16.0.0(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       lucide-react:
         specifier: ^0.546.0
         version: 0.546.0(react@19.2.0)
@@ -468,7 +468,7 @@ importers:
         version: link:../../packages/ui
       flags:
         specifier: ^4.0.1
-        version: 4.0.1(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 4.0.1(next@16.0.0(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       lucide-react:
         specifier: ^0.546.0
         version: 0.546.0(react@19.2.0)
@@ -1943,8 +1943,8 @@ packages:
       vite:
         optional: true
 
-  '@vercel/microfrontends@2.1.0':
-    resolution: {integrity: sha512-x976Ga/zwC37YJJiVIeOlH4OZlENR1WRqgzz/2CKHUqe9O/cFpEZnT7SeQ1j+zh7Wd2epBXwKbWJfiN+cAJrhA==}
+  '@vercel/microfrontends@2.1.2':
+    resolution: {integrity: sha512-dh0mMKaFh0OYPF04bDe6lf5bwiCM6n/2yxy16+S3U+aRUEvZgVe4TGHEz+KMHyUueDSCO/Bg+r+Q3v3aGotjhQ==}
     hasBin: true
     peerDependencies:
       '@sveltejs/kit': '>=1'
@@ -5683,7 +5683,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@vercel/microfrontends@2.1.0(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@vercel/microfrontends@2.1.2(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@next/env': 15.5.4
       '@types/md5': 2.3.6
@@ -6759,7 +6759,7 @@ snapshots:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
-  flags@4.0.1(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  flags@4.0.1(next@16.0.0(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@edge-runtime/cookies': 5.0.2
       jose: 5.10.0

@@ -13,7 +13,7 @@
   "dependencies": {
     "@repo/ui": "workspace:^",
     "@uidotdev/usehooks": "^2.4.1",
-    "@vercel/microfrontends": "^2.1.0",
+    "@vercel/microfrontends": "^2.1.2",
     "@vercel/toolbar": "^0.1.36",
     "flags": "^4.0.1",
     "lucide-react": "^0.509.0",
